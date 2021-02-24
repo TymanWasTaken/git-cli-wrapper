@@ -1,4 +1,5 @@
 import { log } from "./util.ts"
+import { lang } from "./lang.ts"
 import { exec, OutputMode } from "https://deno.land/x/exec@0.0.5/mod.ts"
 import { isGit as isGitRepo } from "https://deno.land/x/is_git@v0.1.1/mod.ts";
 
@@ -107,6 +108,10 @@ switch (subComand) {
 		break
 	}
 	case "help": {
+		if (args[0] && lang[args[0].toUpperCase().replace("-", "_")]) {
+			log(args[0].toUpperCase().replace("-", "_"))
+			break
+		}
 		log("HELP_MESSAGE")
 		break
 	}
