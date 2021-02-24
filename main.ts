@@ -83,6 +83,27 @@ switch (subComand) {
 		
 		break
 	}
+	case "ignore-gen": {
+		if (!args[0]) {
+			log("NO_GITIGNORE_TYPE")
+			break
+		}
+		log("GENNING_GITIGNORE")
+		const allowedTypes = (await (await fetch("https://www.toptal.com/developers/gitignore/api/list")).text()).split(/[\n,]+/)
+		for (const type of args) {
+			if (!allowedTypes.includes(type)) {
+				log("INVALID_GITIGNORE_TYPE", {
+					type
+				})
+				break
+			}
+		}
+		await Deno.writeFile(".gitignore", (new TextEncoder()).encode(await (await fetch("https://www.toptal.com/developers/gitignore/api/" + args.join(","))).text()))
+		log("GENERATED_GITIGNORE", {
+			types: args.reduce((p, c, i) => i == args.length - 1 ? `${p}, and ${c}` : `${p}, ${c}`)
+		})
+		break
+	}
 	case "help": {
 		log("HELP_MESSAGE")
 		break

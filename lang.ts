@@ -38,6 +38,18 @@ export const lang = {
 	"NOTHING_TO_COMMIT": (params: Record<string, string>) => logText`
 		${colors.bright}${colors.fg.red}There is nothing to commit!${colors.reset}
 	`,
+	"GENNING_GITIGNORE": (params: Record<string, string>) => logText`
+		${colors.fg.yellow}Creating gitignore...${colors.reset}
+	`,
+	"NO_GITIGNORE_TYPE": (params: Record<string, string>) => logText`
+		${colors.bright}${colors.fg.red}You need to provide one or more types to generate a gitignore for!${colors.reset}
+	`,
+	"INVALID_GITIGNORE_TYPE": (params: Record<string, string>) => logText`
+		${colors.bright}${colors.fg.red}${params.type.replace(/^(.)/, (_match, l: string) => l.toUpperCase())} is an invalid gitignore type!${colors.reset}
+	`,
+	"GENERATED_GITIGNORE": (params: Record<string, string>) => logText`
+		${colors.bright}${colors.fg.green}Successfully generated gitignore for types ${params.types}!${colors.reset}
+	`,
 	"UNKNOWN_ERROR": (params: Record<string, string>) => logText`
 		${colors.bright}${colors.fg.red}An unknown error occured:
 		${params.cmdOutput}${colors.reset}
