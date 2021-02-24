@@ -108,8 +108,8 @@ switch (subComand) {
 		break
 	}
 	case "help": {
-		if (args[0] && lang[args[0].toUpperCase().replace("-", "_")]) {
-			log(args[0].toUpperCase().replace("-", "_"))
+		if (args[0] && lang[args[0].toUpperCase().replace("-", "_") as (keyof typeof lang)]) {
+			log(args[0].toUpperCase().replace("-", "_") as (keyof typeof lang))
 			break
 		}
 		log("HELP_MESSAGE")
