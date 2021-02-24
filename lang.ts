@@ -33,8 +33,15 @@ export const lang = {
 		Usage:
 			${colors.fg.magenta}gitw commit <commit message>${colors.fg.blue}
 
-		If anything is given after the command, it will simply run git add as if you weren't using the wrapper. This will likely be changed later.
-		If you just run "gitw add" it will add all untracked files.${colors.reset}
+		Simply commits current changes, adding untracked files if they exist.${colors.reset}
+	`,
+	"IGNORE_GEN_HELP_MESSAGE": (params: Record<string, string>) => logText`
+		${colors.fg.blue}gitw ${colors.fg.green}${version}${colors.fg.blue}
+		
+		Usage:
+			${colors.fg.magenta}gitw ignore-gen <keywords>${colors.fg.blue}
+
+		Generates a .gitignore file based on the keywords given.${colors.reset}
 	`,
 	"NOT_GIT_REPO": (params: Record<string, string>) => logText`
 		${colors.bright}${colors.fg.red}This isn't a git repo!${colors.reset}
