@@ -7,11 +7,12 @@ export const lang = {
 		${colors.fg.blue}gitw ${colors.fg.green}${version}${colors.fg.blue}
 		
 		Usage:
-		${colors.fg.magenta}gitw [subcommand]${colors.fg.blue}
+			${colors.fg.magenta}gitw [subcommand]${colors.fg.blue}
 
 		Subcommands: ${colors.fg.red}
 			add         ${colors.fg.yellow}Adds files to the working tree${colors.fg.red}
 			commit      ${colors.fg.yellow}Creates a new commit with git${colors.fg.red}
+			ingore-gen  ${colors.fg.yellow}Generates a gitignore for the given keywords${colors.fg.red}
 			help        ${colors.fg.yellow}Shows this help message${colors.reset}
 	`,
 	"NOT_GIT_REPO": (params: Record<string, string>) => logText`
