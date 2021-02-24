@@ -15,6 +15,27 @@ export const lang = {
 			ingore-gen  ${colors.fg.yellow}Generates a gitignore for the given keywords${colors.fg.red}
 			help        ${colors.fg.yellow}Shows this help message${colors.reset}
 	`,
+	"ADD_HELP_MESSAGE": (params: Record<string, string>) => logText`
+		${colors.fg.blue}gitw ${colors.fg.green}${version}${colors.fg.blue}
+		
+		Usage:
+			${colors.fg.magenta}gitw add${colors.fg.blue}
+
+		Examples:
+			${colors.fg.magenta}gitw add${colors.fg.blue}
+		
+		If anything is given after the command, it will simply run git add as if you weren't using the wrapper. This will likely be changed later.
+		If you just run "gitw add" it will add all untracked files.${colors.reset}
+	`,
+	"COMMIT_HELP_MESSAGE": (params: Record<string, string>) => logText`
+		${colors.fg.blue}gitw ${colors.fg.green}${version}${colors.fg.blue}
+		
+		Usage:
+			${colors.fg.magenta}gitw commit <commit message>${colors.fg.blue}
+
+		If anything is given after the command, it will simply run git add as if you weren't using the wrapper. This will likely be changed later.
+		If you just run "gitw add" it will add all untracked files.${colors.reset}
+	`,
 	"NOT_GIT_REPO": (params: Record<string, string>) => logText`
 		${colors.bright}${colors.fg.red}This isn't a git repo!${colors.reset}
 	`,

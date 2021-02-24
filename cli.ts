@@ -90,14 +90,16 @@ switch (subComand) {
 		}
 		log("GENNING_GITIGNORE")
 		const allowedTypes = (await (await fetch("https://www.toptal.com/developers/gitignore/api/list")).text()).split(/[\n,]+/)
+		let abort = false
 		for (const type of args) {
 			if (!allowedTypes.includes(type)) {
 				log("INVALID_GITIGNORE_TYPE", {
 					type
 				})
-				break
+				abort = true
 			}
 		}
+		if (abort) break
 		await Deno.writeFile(".gitignore", (new TextEncoder()).encode(await (await fetch("https://www.toptal.com/developers/gitignore/api/" + args.join(","))).text()))
 		log("GENERATED_GITIGNORE", {
 			types: args.reduce((p, c, i) => i == args.length - 1 ? `${p}, and ${c}` : `${p}, ${c}`)
